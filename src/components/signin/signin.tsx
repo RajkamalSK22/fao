@@ -28,9 +28,34 @@ const FormContainer = styled.div`
 
 const StyledForm = styled(Form)`
     width: 100%;
-    display: flex;
     flex-direction: column;
     align-items: center;
+
+    .ant-form-item{
+        width: 100%;
+    }
+
+    .ant-btn-primary {
+        width: 100%;
+        background: #7F56D9;
+        height: 44px;
+        padding: 10px 18px 10px 18px;
+        gap: 8px;
+        border-radius: 8px;
+        border: 1px;
+    }  
+`;
+const InputsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+`;
+
+const TitleLable = styled.span`
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #344054;
 `;
 
 const ImageContainer = styled.div`
@@ -77,20 +102,25 @@ const Login = () => {
             </LogoContainer>
             <FormContainer>
                 <StyledForm name="login-form" initialValues={{ remember: true }} onFinish={onFinish}>
-                    <Form.Item
-                        name="username"
-                        rules={[{ required: true, message: 'Please input your username!' }]}
-                    >
-                        <Input placeholder="Username" />
-                    </Form.Item>
-
+                    <InputsContainer>
+                        <TitleLable>Email</TitleLable>
+                        <Form.Item
+                            name="username"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input placeholder="Username" />
+                        </Form.Item>
+                    </InputsContainer>
+                    <InputsContainer>
+                    <TitleLable>Password</TitleLable>
                     <Form.Item
                         name="password"
                         rules={[{ required: true, message: 'Please input your password!' }]}
                     >
                         <Input.Password placeholder="Password" />
                     </Form.Item>
-
+                    </InputsContainer>
+                    
                     <Form.Item name="remember" valuePropName="checked">
                         <Checkbox>Remember for 30 days</Checkbox>
                     </Form.Item>
